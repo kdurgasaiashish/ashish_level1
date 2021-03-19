@@ -1,60 +1,51 @@
 #include<stdio.h>
-struct function
+typedef struct
 {
-int a,b;
-}
-struct fraction sum(struct fraction fr1,struct fraction fr2);
-void display(struct fraction fr1,struct fraction fr2,struct fraction fract);
-int gcd(int num,int den)
+int num;
+int deno;
+}fraction;
+fraction sum(fraction,fraction);
+int gcd(int a,int b){
+int g=1;
+for(int i=1;i<=a&&i<=b;i++)
 {
-int div,g,i;
-if(num>den)
-{
-div=num;
-}
-for(i=div;i>n;i--)
-{
-if(num%i==0&&den%i==0)
+if(a%i==0&&b%i==0)
 {
 g=i;
-break;
 }
+   }
+return g;
 }
-return 0;
-}
-struct fraction input()
+
+fraction input(int x)
 {
-struct fraction input()
-{
-struct fraction fract;
-printf("enter the numerator:\n");
-scanf("%d",& fract.a);
-printf("enter the denominator:\n");
-scanf("%d",&fract.b);
-return fract;
+fraction f;
+printf("enter fraction%d(numerator/denominator):",x);
+scanf("%d%d",&f.num,&f.deno);
+return f;
 }
-struct fraction sum(struct fraction fr1,struct fraction fr2)
+ fraction sum(fraction f1,fraction f2)
 {
-struct fraction frsum;
-frsum.a=(fr1.a*fr2.b)+(fr2.a*fr1.b);
-frsum.b=(fr1,b*fr2.b);
-int g;
-g=gcd(frsum.a,frsum.b);
-frsum.a=frsum.a/g;
-frsum.b=frsum.b/g;
-return frsum;
-}
-void display(struct fraction fr1,struct fraction fr2,struct fraction fract)
+ fraction add;
+ add.num=(f1.num*f2.deno)+(f2.num*f1.deno);
+ add.deno=(f1.deno*f2.deno);
+ int g=gcd(add.num,add.deno);
+ add.num/=g;
+ add.deno/=g;
+ return add;
+ }
+
+void display(fraction f1,fraction f2,fraction sum)
 {
-printf("the sum of %d %d and %d %d is %d %d",fract fr1.a,fract fr1.b,fract fr2.a,fract fr2.b,fract.a,fract.b);
-}
+printf("%d/%d+%d/%d is %d/%d\n",f1.num,f1.deno,f2.num,f2.deno,sum.num,sum.deno);}
 int main()
 {
-struct fraction fract1,fract2,fract3;
-fract1=input();
-fract2=input();
-fract3=sum(fract1,fract2);
-display fract1,fract2,fract3;
-return 0;
+fraction f1=input(1);
+fraction f2=input(2);
+fraction result=sum(f1,f2);
+
+display( f1,f2,result);
 }
-find the sum of n fractions.
+
+
+
