@@ -2,19 +2,35 @@
 #include<math.h>
 struct point
 {
-    float a,b;
+float x;
+float y;
 };
-float distance(struct point A,struct point B)
+typedef struct point Point;
+Point input(char b[])
 {
-    float d;
-    d=sqrt(pow((A.a-B.a),2)+pow((A.b-B.b),2));
-    return d;
+Point p;
+printf("enter the values of %s:",b);
+scanf("%f%f",&p.x,&p.y);
+return p;
 }
-int main()
+float compute_distance(Point p1,Point p2)
 {
-    struct point A,B;
-    printf("enter the points:\n");
-    scanf("%f%f%f%f",&A.a,&A.b,&B.a,&B.b);
-    printf("\ndistance between point A(%f%f) and B(%f%f) is %f\n",A.a,A.b,B.a,B.b,distance(A,B));
-    return 0;
+float distance;
+distance=sqrt((p1.x-p2.x)*(p1.x-p2.x)+(p1.y-p2.y)*(p1.y-p2.y));
+return distance;
 }
+void output(Point p1,Point p2,float dist)
+{
+printf("the distance between %f,%f and %f,%f is %f",p1.x,p1.y,p2.x,p2.y,dist);
+}
+int main(void)
+{
+float dist;
+Point p1,p2;
+p1=input("x1,y1");
+p2=input("x2,y2");
+dist=compute_distance(p1,p2);
+output(p1,p2,dist);
+return 0;
+}
+
