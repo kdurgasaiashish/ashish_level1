@@ -1,10 +1,10 @@
 #include<stdio.h>
 int main()
 {
-float h,d,b;
-float volume_of_tromoboloid;
-printf("enter the elements of h,d,b");
-scanf("%f%f%f",&h,&d,&b);
-volume_of_tromoboloid = (((h*d*b)+(d/b))/3);
-printf("volume_of_tromoboloid is%f",volume_of_tromoboloid);
+int h,d,b;
+float volume;
+printf("enter the height,depth,breadth of tromboloid");
+scanf("%d%d%d",&h,&d,&b);
+volume =0.33*((h*d*b)+(d/b));
+printf("volume of tromoboloid is%f",volume);
 }
